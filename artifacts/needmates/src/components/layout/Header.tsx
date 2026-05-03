@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { MapPin, Search, Plus, Menu } from "lucide-react";
+import { MapPin, Plus, Menu, LayoutGrid } from "lucide-react";
 import { Button } from "../ui/Button";
 
 export function Header() {
@@ -42,17 +42,47 @@ export function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="hidden lg:flex items-center gap-2 text-sm font-semibold text-muted-foreground bg-muted px-4 py-2 rounded-full">
             <MapPin className="w-4 h-4 text-primary" />
             Wokingham (RG40)
           </div>
-          
+
           <Link href="/create">
-            <Button className="hidden md:flex gap-2 rounded-full">
+            <Button className="hidden md:flex gap-2 rounded-full" data-testid="btn-header-post">
               <Plus className="w-5 h-5" />
               Post a Need
             </Button>
+          </Link>
+
+          <Link href="/account">
+            <div
+              className={cn(
+                "w-10 h-10 rounded-full flex items-center justify-center text-xs font-black transition-all border-2 cursor-pointer",
+                location.startsWith('/account')
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-muted text-foreground border-border hover:border-primary hover:bg-primary/10"
+              )}
+              title="My Account"
+              data-testid="btn-my-account"
+            >
+              SC
+            </div>
+          </Link>
+
+          <Link href="/admin">
+            <div
+              className={cn(
+                "hidden md:flex w-9 h-9 rounded-xl items-center justify-center transition-all border-2 cursor-pointer",
+                location.startsWith('/admin')
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-muted text-muted-foreground border-border hover:border-primary hover:bg-primary/10 hover:text-primary"
+              )}
+              title="Admin"
+              data-testid="btn-admin"
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </div>
           </Link>
 
           <Button variant="outline" size="icon" className="md:hidden rounded-full">
