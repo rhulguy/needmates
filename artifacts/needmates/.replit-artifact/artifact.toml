@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "NeedMates"
+version = "1.0.0"
+id = "artifacts/needmates"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23111
+
+[services.development]
+run = "pnpm --filter @workspace/needmates run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/needmates", "run", "build" ]
+publicDir = "artifacts/needmates/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23111"
+BASE_PATH = "/"

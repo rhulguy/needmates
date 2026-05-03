@@ -1,0 +1,390 @@
+Build a complete React + TypeScript + Tailwind CSS MVP called NeedMates.
+
+NeedMates is a local social trading and connection platform where people post what they need locally, find others who need the same thing, get help from trusted neighbours, and invite local businesses to respond.
+
+It is not a normal marketplace. It is a local demand network.
+
+Core positioning:
+“Post what you need. Find people nearby who can help, join in, or recommend someone trusted.”
+
+Important context:
+This project is being built first in Replit, but the final codebase will later be moved into Lovable. Build the code cleanly so Lovable can continue from it. Use simple React/TypeScript patterns, clear component boundaries, reusable components, centralised mock data, and standard Tailwind classes. Avoid clever abstractions, obscure libraries, over-engineering, or deeply nested type inference.
+
+Tech stack:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- lucide-react
+- Local mock data in TypeScript files
+
+Build these pages:
+1. Homepage
+2. Local Needs Feed
+3. Create Need
+4. Need Detail Page
+5. Offers / Responses
+6. User Profile
+7. Business Access
+8. How It Works
+
+Design requirement:
+Make the design exceptional. It should feel like a premium modern local platform with the friendliness of a community product and the clarity of a SaaS dashboard.
+
+Visual direction:
+- Clean, warm, Notion-like interface
+- Soft off-white or pale background
+- Rounded white cards
+- Subtle shadows
+- Strong spacing
+- Clear typography
+- Friendly icons
+- Polished mobile responsiveness
+- Deep green, teal, warm blue, or similar as primary colour
+- Accent colours used sparingly
+- No generic Bootstrap look
+- No harsh colours
+- No clutter
+- No cheap classified ads feel
+
+Homepage:
+Create a strong hero section with:
+Headline:
+“Need something local? Find people nearby who can help.”
+
+Subheading:
+“Post a need, join others with the same interest, get trusted recommendations, or invite local businesses to respond.”
+
+CTA buttons:
+“Post a Need”
+“Browse Local Needs”
+
+Include a polished hero visual showing stacked example need cards:
+- 4 neighbours want driveway cleaning
+- Sarah can lend a carpet cleaner
+- 3 parents need GCSE maths tutoring
+- Tom recommends a local electrician
+- 6 homes want EV charger quotes
+
+Homepage sections:
+- How it works
+- Need categories
+- Local demand examples
+- Trust section
+- Business section
+- Final CTA
+
+Main product mechanic:
+The most important interaction is “I need this too”.
+This turns one person’s need into visible local demand.
+
+Need types:
+- I need
+- I can offer
+- Who else wants this?
+- I recommend
+- Borrow / lend
+- Social connection
+
+Local Needs Feed:
+Include:
+- Search
+- Type filters
+- Category filters
+- Sort options
+- Need cards
+- Interest counts
+- Help counts
+- Recommendation counts
+- Business response counts
+- Trust badges
+- Progress bars for group interest posts
+
+Sort options:
+- Newest
+- Most interest
+- Closest to threshold
+- Most recommended
+- Recently active
+
+Each NeedCard should show:
+- Title
+- Type badge
+- Category
+- Location
+- Posted by
+- Trust signals
+- Short description
+- Number interested
+- Number offering help
+- Number of recommendations
+- Time posted
+- Buttons:
+  - I need this too
+  - I can help
+  - View
+
+Create Need page:
+Build a clean form with:
+- Post type
+- Title
+- Description
+- Category
+- Location / postcode area
+- Radius in km
+- Desired outcome
+- Urgency
+- Visibility
+- Allow businesses to respond
+- Allow others to join
+- Target number of interested people
+- Contact preference
+
+On submit, create the new need in local state if practical, or show a polished success state.
+
+Need Detail page:
+Show:
+- Full title and description
+- Type badge
+- Category
+- Location
+- Poster details
+- Trust indicators
+- Demand panel
+- Progress bar
+- People interested
+- People offering help
+- Recommendations
+- Business responses
+- Target threshold
+- Action buttons:
+  - I need this too
+  - I can help
+  - I know someone
+  - Recommend a business
+  - Follow updates
+  - Share locally
+- Tabs or sections for:
+  - Offers to help
+  - Recommendations
+  - Business responses
+  - People also interested
+  - Activity
+- Related needs nearby
+
+Trust layer:
+Create reusable components:
+- TrustBadge
+- TrustPanel
+- VouchCard
+
+Trust examples:
+- Postcode area verified
+- Vouched by 3 locals
+- 2 completed helps
+- Recommended business
+- Known through former workplace
+
+User Profile page:
+Show:
+- Name
+- Area
+- Bio
+- What I can help with
+- Things I often need
+- Tools/items I can lend
+- Skills
+- Former companies or communities
+- Vouches
+- Completed interactions
+- Recommendations given
+- Recommendations received
+- Privacy toggles as mock UI
+
+Business Access page:
+Headline:
+“See what people near you already want.”
+
+Subheading:
+“NeedMates helps local businesses respond to real local demand before customers scatter across Facebook groups, WhatsApp chats, and search results.”
+
+Show example opportunities:
+- 8 neighbours want driveway cleaning
+- 4 families need tutoring
+- 6 homes want EV chargers
+- 10 residents want garden maintenance
+- 3 people need dog walking
+
+CTA:
+“View local opportunities”
+
+Mock data:
+Create central mock data files:
+- src/data/mockUsers.ts
+- src/data/mockNeeds.ts
+- src/data/mockResponses.ts
+- src/data/mockBusinesses.ts
+- src/data/mockCategories.ts
+
+Use at least 12 realistic local needs:
+1. Who else wants a reliable window cleaner in Wokingham?
+2. Can anyone lend a carpet cleaner this weekend?
+3. Looking for GCSE maths tutoring near Crowthorne
+4. I can help local small businesses improve their website
+5. Anyone interested in a group EV charger quote?
+6. Recommend a trustworthy dog sitter near Winnersh
+7. Anyone who worked at Vodafone Reading from 2000 to 2010?
+8. Need help moving a heavy wardrobe
+9. Who else wants monthly garden maintenance?
+10. I can lend a pressure washer
+11. Looking for a local running buddy
+12. Can anyone recommend a good local accountant?
+
+Suggested data models:
+User:
+- id
+- name
+- avatar
+- locationLabel
+- postcodeArea
+- bio
+- trustSignals
+- skills
+- canLend
+- formerCompanies
+- completedInteractions
+- vouchCount
+
+NeedPost:
+- id
+- type
+- title
+- description
+- category
+- locationLabel
+- radiusKm
+- postedByUserId
+- createdAt
+- urgency
+- status
+- interestedCount
+- helpOfferCount
+- recommendationCount
+- businessResponseCount
+- targetInterestCount
+- allowBusinessResponses
+- allowJoinInterest
+- tags
+
+NeedResponse:
+- id
+- needId
+- responderType
+- responderId
+- responseType
+- message
+- createdAt
+
+LocalBusiness:
+- id
+- name
+- category
+- locationLabel
+- description
+- verified
+- rating
+- completedJobs
+- responseCount
+- tags
+
+Suggested file structure:
+src/
+  App.tsx
+  main.tsx
+  routes/
+    HomePage.tsx
+    NeedsFeedPage.tsx
+    CreateNeedPage.tsx
+    NeedDetailPage.tsx
+    OffersPage.tsx
+    ProfilePage.tsx
+    BusinessPage.tsx
+    HowItWorksPage.tsx
+  components/
+    layout/
+      AppShell.tsx
+      Header.tsx
+      MobileNav.tsx
+      Footer.tsx
+    ui/
+      Button.tsx
+      Card.tsx
+      Badge.tsx
+      Input.tsx
+      Select.tsx
+      Textarea.tsx
+      ProgressBar.tsx
+      EmptyState.tsx
+    needs/
+      NeedCard.tsx
+      NeedTypeBadge.tsx
+      NeedFilters.tsx
+      NeedStats.tsx
+      NeedActionBar.tsx
+      NeedResponseCard.tsx
+    trust/
+      TrustBadge.tsx
+      TrustPanel.tsx
+      VouchCard.tsx
+    home/
+      HeroNeedStack.tsx
+      HowItWorks.tsx
+      CategoryGrid.tsx
+      LocalDemandExamples.tsx
+    profile/
+      ProfileCard.tsx
+      ProfileTrustSection.tsx
+    business/
+      BusinessOpportunityCard.tsx
+  data/
+    mockUsers.ts
+    mockNeeds.ts
+    mockResponses.ts
+    mockBusinesses.ts
+    mockCategories.ts
+  types/
+    index.ts
+  lib/
+    utils.ts
+
+Interactions:
+- Feed filters should work
+- Search should work
+- Sort should work
+- “I need this too” should increment interested count in local state where practical
+- “I can help” should increment help count where practical
+- Need detail page should show progress toward target
+- Create Need should show a success state or add to local state
+- Buttons should feel interactive even if backed by mock behaviour
+
+Copy tone:
+Use plain, human, practical copy.
+Avoid corporate fluff.
+Use copy like:
+- Post what you need.
+- See who nearby can help.
+- Join others with the same need.
+- Ask for a local recommendation.
+- Turn local interest into a better offer.
+- Build trust through real local interactions.
+
+Quality bar:
+This should look and feel like a real product demo, not a rough prototype.
+The homepage should explain the idea in under 10 seconds.
+The feed should feel active.
+The “I need this too” mechanic should be obvious.
+Group demand should feel like the main differentiator.
+Trust signals should be visible across the product.
+The code should be clean enough for Lovable to continue later.
+The app must be responsive.
